@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ephrem Atsebeha</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07050f;--card:#120b24;--ink:#e9e6f5;--dim:#9a96b8;--hot:#a855f7;--hot2:#e9b3ff;--cold:#7dd3fc;--line:#33236b;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f4f2fb;--card:#fff;--ink:#16132e;--dim:#524e78;--hot:#7e22ce;--hot2:#6b21a8;--cold:#0369a1;--line:#d5d0ef}}
+:root[data-theme="dark"]{--bg:#07050f}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.7 'JetBrains Mono',ui-monospace,monospace}
+h1,h2,h3{font-family:'Unbounded',system-ui,sans-serif;margin:0;font-weight:700}
+a{color:var(--hot)}a:focus-visible,button:focus-visible{outline:2px solid var(--hot2);outline-offset:3px}
+.hero{position:relative;height:100svh;min-height:560px;overflow:hidden;background:#000}
+#cam{position:absolute;inset:0;width:100%;height:100%;display:block}
+.vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 45%,rgba(0,0,0,.75)),linear-gradient(transparent 55%,rgba(7,5,15,.95))}
+.hud{position:absolute;font-size:12px;color:#e9d5ff;text-shadow:0 0 6px #000;pointer-events:none;line-height:1.5}
+.hud.tl{top:calc(18px + env(safe-area-inset-top,0px));left:20px}.hud.tr{top:calc(18px + env(safe-area-inset-top,0px));right:20px;text-align:right}
+.rec{color:#ff4d4d;animation:bl 1.2s steps(2) infinite}@keyframes bl{50%{opacity:0}}
+.title{position:absolute;left:20px;right:20px;bottom:44px;max-width:980px;margin:0 auto}
+.title h1{font-size:clamp(34px,8.5vw,92px);line-height:1;color:#fff;text-shadow:0 2px 30px rgba(0,0,0,.7)}
+.title p{max-width:54ch;margin:14px 0;color:#e3dff5}
+.tog{font:inherit;font-size:13px;color:#fff;background:rgba(0,0,0,.45);border:1px solid var(--hot);padding:8px 14px;cursor:pointer;border-radius:3px}
+.tog:hover{background:var(--hot);color:#12031f}
+.hint{font-size:12px;color:#c9c3e6;margin-left:12px}
+main{max-width:980px;margin:0 auto;padding:0 20px 120px}
+section{margin-top:96px}
+h2{font-size:clamp(22px,4vw,32px);display:inline-block;padding:10px 18px;position:relative;margin-bottom:22px}
+h2::before,h2::after{content:"";position:absolute;width:14px;height:14px;border:2px solid var(--hot)}
+h2::before{left:0;top:0;border-right:0;border-bottom:0}h2::after{right:0;bottom:0;border-left:0;border-top:0}
+.lead{max-width:62ch;color:var(--dim);margin:0 0 26px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);padding:22px;border-radius:3px;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--hot);transform:translateY(-3px)}
+.card h3{font-size:16px;margin-bottom:4px}.card small{color:var(--hot);font-size:12px}
+.card p{margin:10px 0 14px;color:var(--dim);font-size:14px}
+.tags{display:flex;gap:6px;flex-wrap:wrap}.tags span{font-size:11.5px;color:var(--cold);border:1px solid var(--line);padding:1px 8px;border-radius:2px}
+.big{display:flex;gap:40px;flex-wrap:wrap;margin:6px 0 26px}
+.big b{display:block;font:700 clamp(38px,7vw,64px)/1 'Unbounded',sans-serif;color:var(--hot)}.big span{color:var(--dim);font-size:13px}
+.tl{border-left:1px solid var(--line);padding-left:24px;display:grid;gap:26px}
+.tl div{position:relative}.tl div::before{content:"";position:absolute;left:-30px;top:8px;width:11px;height:11px;border:2px solid var(--hot);background:var(--bg);transform:rotate(45deg)}
+.tl small{color:var(--hot)}.tl h3{font-size:15px}.tl p{margin:2px 0 0;color:var(--dim);font-size:14px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
+.cols h3{font-size:13px;color:var(--hot);margin-bottom:8px}.cols p{margin:0;color:var(--dim);font-size:14px}
+.links{display:flex;gap:12px;flex-wrap:wrap}.links a{padding:10px 18px;border:1px solid var(--hot);text-decoration:none;border-radius:3px}
+.links a:hover{background:var(--hot);color:#12031f}
+.pill{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:5;font-size:12px;background:rgba(10,10,24,.85);color:#e9d5ff;border:1px solid var(--hot);padding:5px 12px;border-radius:999px;backdrop-filter:blur(6px)}
+.wins{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.win{position:relative;overflow:hidden;border:1px solid var(--hot);border-radius:4px;padding:30px 26px 26px;background:radial-gradient(circle at 15% 0,rgba(168,85,247,.18),transparent 60%),var(--card)}
+.medal{width:78px;height:78px;border-radius:50%;display:grid;place-items:center;margin-bottom:18px;font:700 32px 'Unbounded',sans-serif;color:#2a1405;background:radial-gradient(circle at 30% 25%,#ffe0b8,#cd7f32 55%,#7a4318);box-shadow:0 0 0 5px rgba(205,127,50,.25),0 0 34px rgba(168,85,247,.5);transition:transform .5s}
+.win:hover .medal{transform:rotate(-10deg) scale(1.08)}
+.win h3{font-size:19px;line-height:1.3;margin-bottom:4px}.win small{color:var(--hot);font-size:12px}.win p{color:var(--dim);margin:12px 0 14px;font-size:14px}
+.devs{display:flex;gap:26px;align-items:flex-end;flex-wrap:wrap;margin:10px 0 18px}
+.dev{font:inherit;color:inherit;border:2px solid var(--line);background:var(--card);border-radius:16px;padding:10px;cursor:pointer;transition:border-color .25s,box-shadow .25s,transform .3s}
+.dev:hover,.dev[aria-pressed="true"]{border-color:var(--hot);box-shadow:0 0 30px rgba(168,85,247,.3);transform:translateY(-5px)}
+.dev.p{width:100px;height:196px}.dev.t{width:176px;height:236px;border-radius:14px}.dev.l{width:min(100%,310px);height:190px;border-radius:10px 10px 3px 3px}
+.scr{height:100%;border-radius:7px;background:linear-gradient(180deg,#14122e,#0a0918);padding:9px;display:grid;gap:7px;align-content:start}
+.scr i{display:block;height:11px;border-radius:3px;background:var(--cold);opacity:.8;animation:pu 2.4s ease-in-out infinite}
+.scr i:nth-child(2){width:70%;background:var(--hot);animation-delay:.3s}.scr i:nth-child(3){width:86%;animation-delay:.6s}.scr i:nth-child(4){width:52%;background:var(--hot2);animation-delay:.9s}.scr i:nth-child(5){width:76%;animation-delay:1.2s}
+@keyframes pu{50%{opacity:.25}}
+#devtxt{min-height:48px;color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.scr i{animation:none}}
+.join{display:inline-block;padding:12px 20px;background:var(--hot);color:#12031f;text-decoration:none;border-radius:3px;font-weight:500}.join:hover{background:var(--hot2)}
+.also{margin-top:16px;color:var(--dim);font-size:13px}
+#boot{position:fixed;inset:0;z-index:20;background:#000;color:#e9d5ff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .6s;cursor:pointer}
+#bl{white-space:pre;font-size:14px;line-height:1.8;min-width:min(86vw,360px);min-height:150px}#boot small{color:#8a7a6a;font-size:11px}
+.term{position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:6}
+.tbtn{font:inherit;font-size:12px;color:#e9d5ff;background:rgba(15,8,32,.88);border:1px solid var(--hot);padding:6px 14px;border-radius:999px;cursor:pointer;backdrop-filter:blur(6px)}
+.tbtn kbd{font:inherit;border:1px solid var(--line);padding:0 6px;border-radius:3px;margin-left:8px;color:var(--hot2)}
+.tbtn:hover{background:var(--hot);color:#12031f}.tbtn:hover kbd{color:#12031f}
+.tpanel{position:absolute;left:0;bottom:0;width:min(400px,calc(100vw - 28px));background:rgba(12,7,26,.95);border:1px solid var(--hot);border-radius:8px;backdrop-filter:blur(10px);box-shadow:0 10px 50px rgba(168,85,247,.35);overflow:hidden;font-size:12.5px;color:#e9d5ff}
+.thead{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1px solid var(--line);color:var(--hot2)}
+.thead button{font:inherit;font-size:12px;color:inherit;background:none;border:1px solid var(--line);border-radius:3px;padding:1px 10px;cursor:pointer}
+.thead button:hover{border-color:var(--hot)}
+#tlog{max-height:150px;overflow-y:auto;padding:10px 12px;display:grid;gap:3px}#tlog .cmd{color:var(--hot2)}
+.tchips{display:flex;flex-wrap:wrap;gap:6px;padding:0 12px 10px}
+.tchips button{font:inherit;font-size:11.5px;color:#e9d5ff;background:transparent;border:1px solid var(--line);padding:3px 10px;border-radius:999px;cursor:pointer}
+.tchips button:hover{border-color:var(--hot);background:rgba(168,85,247,.22)}
+.trow{display:flex;gap:8px;padding:10px 12px;border-top:1px solid var(--line)}.trow span{color:var(--hot2)}
+.trow input{flex:1;min-width:0;background:none;border:0;outline:0;color:#e9d5ff;font:inherit}.trow:focus-within{box-shadow:inset 0 0 0 1px var(--hot)}
+#net{width:100%;height:380px;display:block;border:1px solid var(--line);border-radius:3px;background:var(--card);margin:0 0 10px;touch-action:pan-y}
+.cap{font-size:12px;color:var(--dim);margin:0 0 22px}
+@media (prefers-reduced-motion:reduce){.rec{animation:none}html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="hero" id="top" data-sector="takeoff">
+  <canvas id="cam" role="img" aria-label="Simulated thermal drone camera over farmland with cattle detection"></canvas>
+  <div class="vig"></div>
+  <div class="hud tl"><span class="rec">●</span> REC &nbsp;AGRI-1<br>mode: <span id="hm">thermal</span><br>targets: <span id="ht">0</span></div>
+  <div class="hud tr"><span id="hc">9.0300 N 38.7400 E</span><br>alt <span id="ha">120</span> m<br><span id="hl">searching</span></div>
+  <div class="title">
+    <h1>Ephrem Atsebeha</h1>
+    <p>I build computer vision and machine learning systems, like a drone that watches over cattle and farmland, and cross-platform apps that run on every screen. Computer Science and Business at NYU Abu Dhabi.</p>
+    <button class="tog" id="tog">Switch to visible camera</button><span class="hint">Move over the field. The camera locks onto cattle.</span>
+  </div>
+</header>
+
+<main>
+<section data-sector="competitions" id="competitions" style="margin-top:72px">
+  <h2>Competitions won</h2>
+  <p class="lead">Two hackathons, two podium finishes, three years apart.</p>
+  <div class="wins">
+    <div class="win"><div class="medal" aria-hidden="true">3</div><small>September 2026</small><h3>3rd place, Campus of Creators</h3><p>NYU Abu Dhabi x JetBrains Hackathon. Built a Kotlin solution for tech for social impact in a fast-paced event.</p><div class="tags"><span>Kotlin</span><span>Social impact</span></div><p style="margin:14px 0 0"><a href="https://www.linkedin.com/in/ephremat/overlay/Honor/1125720617/treasury/?profileId=ACoAAEyo7E4BVef7YkDa7-ycV7HGwSUuFsEEXss">See the award on LinkedIn</a></p></div>
+    <div class="win"><div class="medal" aria-hidden="true">3</div><small>2023</small><h3>3rd place, ALX Addis TeenCode Hackathon</h3><p>My team built Codex, a movie suggestion website on an external API, and we won a medal.</p><div class="tags"><span>Web</span><span>APIs</span></div><p style="margin:14px 0 0"><a href="https://github.com/Addis-TeenCode-Hackathon/Codex">View the repository</a></p></div>
+  </div>
+  <p class="also">Also competed: A2SV Generative AI Hackathon for Africa (2023), backed by Google.</p>
+</section>
+
+<section data-sector="projects" id="projects">
+  <h2>Projects</h2>
+  <p class="lead">Systems that see, recognise and help people. Python, vision and a lot of retraining.</p>
+  <div class="grid">
+    <div class="card"><small>2024 to present</small><h3>Agricultural monitoring drone</h3><p>A drone that monitors cattle and farmland conditions so farmers can act earlier. Built with teammates and the Ethiopian AI Institute.</p><div class="tags"><span>Python</span><span>Computer vision</span><span>Robotics</span></div></div>
+    <div class="card"><small>2024</small><h3>Face detection security system</h3><p>Facial recognition for controlled entry. It works, and I keep training the model to push its accuracy higher.</p><div class="tags"><span>Python</span><span>Facial recognition</span><span>ML</span></div></div>
+    <div class="card"><small>2023, 3rd place</small><h3>Codex movie suggestions</h3><p>A movie suggestion website built on an external API with my team at the ALX Addis TeenCode Hackathon. We won a medal.</p><div class="tags"><span>Web</span><span>APIs</span></div><p style="margin:12px 0 0"><a href="https://github.com/Addis-TeenCode-Hackathon/Codex">View the repository</a></p></div>
+    <div class="card"><small>2023 to 2024</small><h3>Adwa GPT and grading system</h3><p>Coding projects my Computer Science Club presented to the whole school, plus talks on cybersecurity, data privacy and algorithms.</p><div class="tags"><span>NLP</span><span>Data</span><span>Teaching</span></div></div>
+  </div>
+</section>
+
+<section data-sector="apps" id="apps">
+  <h2>One app, every screen</h2>
+  <p class="lead">I also build cross-platform apps with Flutter and Kotlin, so one idea can run on phones, tablets, the web and desktop. Tap a device.</p>
+  <div class="devs">
+    <button class="dev p" data-t="Phone: Android and iOS from one Flutter codebase." aria-pressed="true" aria-label="Phone"><div class="scr"><i></i><i></i><i></i><i></i><i></i></div></button>
+    <button class="dev t" data-t="Tablet: the same screens, with layouts that adapt to the extra space." aria-pressed="false" aria-label="Tablet"><div class="scr"><i></i><i></i><i></i><i></i><i></i></div></button>
+    <button class="dev l" data-t="Desktop and web: the same app, running in a window or a browser." aria-pressed="false" aria-label="Laptop"><div class="scr"><i></i><i></i><i></i><i></i><i></i></div></button>
+  </div>
+  <p id="devtxt" class="lead" aria-live="polite">Phone: Android and iOS from one Flutter codebase.</p>
+</section>
+
+<section data-sector="impact" id="impact">
+  <h2>Impact</h2>
+  <div class="big">
+    <div><b data-n="1200">0</b><span>volunteers in the Nexus network I founded</span></div>
+    <div><b data-n="35000">0</b><span>tablets and phones set up and fixed at Ethiopia Statistics Agency</span></div>
+    <div><b>2x</b><span>3rd place at hackathons: NYU Abu Dhabi x JetBrains and ALX Addis TeenCode</span></div>
+  </div>
+  <canvas id="net" role="img" aria-label="Network map of the Nexus Volunteers organization and its partner charities"></canvas>
+  <p class="cap">The Nexus network. Each dot stands for about 5 volunteers. Hover a partner to light up its group.</p>
+  <p style="margin:0 0 26px"><a class="join" href="https://t.me/NexusVolunteerism">Join the Nexus channel on Telegram</a></p>
+  <p class="lead">Nexus Volunteers connects people who want to help with charities that need them, and runs outreach for orphans and people other charities don't reach. Partners include the Ethiopian Red Cross Society, Mary Joy Development Association, Sele Enat Charitable Organization, Nehemiah Autism Center, Mathios Wendu Cancer Society and A2SV.</p>
+</section>
+
+<section data-sector="experience" id="experience">
+  <h2>Experience</h2>
+  <div class="tl">
+    <div><small>Summer 2024</small><h3>Teaching intern, Nefas Silk Lafto Woreda 12 Youth Center</h3><p>Taught information technology to youth and children, and ran English courses for kids under 15.</p></div>
+    <div><small>Summer 2023</small><h3>IT intern (paid), Ethiopia Statistics Agency</h3><p>Set up, reset, renewed and troubleshot more than 35,000 devices handed out to employees.</p></div>
+    <div><small>Summer 2022</small><h3>IT department intern, Lebawi International Academy</h3><p>Updated the school website and produced student ID cards, fixing issues along the way.</p></div>
+  </div>
+</section>
+
+<section data-sector="skills" id="skills">
+  <h2>Skills</h2>
+  <div class="cols">
+    <div><h3>Languages</h3><p>Python, C++, JavaScript, Kotlin, C#, Go, Flutter</p></div>
+    <div><h3>Technical</h3><p>Cross-platform app development, machine learning, computer vision, NLP, data analysis, facial recognition, robotics, web development, cybersecurity (foundations)</p></div>
+    <div><h3>Tools</h3><p>Git and GitHub, Linux and Unix command line</p></div>
+    <div><h3>People skills</h3><p>Community organizing, public speaking, video editing, social media</p></div>
+  </div>
+</section>
+
+<section data-sector="recognition" id="recognition">
+  <h2>Recognition</h2>
+  <div class="tl">
+    <div><small>2024</small><h3>Yale Young Global Scholars</h3><p>Accepted to a selective Yale University program with roughly a 15 to 25 percent acceptance rate.</p></div>
+    <div><small>2024</small><h3>AI Summer Camp, Ethiopian AI Institute</h3><p>Chosen from 3,000 applicants. Studied Python, robotics, ML, NLP, computer vision and data science.</p></div>
+    <div><small>2023</small><h3>A2SV Generative AI Hackathon for Africa</h3><p>Competed in the hackathon organised by African to Silicon Valley, backed by Google.</p></div>
+    <div><small>2023</small><h3>Selam Learning full scholarship</h3><p>Awarded for academic achievement, valued at over $1,000.</p></div>
+  </div>
+</section>
+
+<section data-sector="leadership" id="leadership">
+  <h2>Leadership</h2>
+  <div class="cols">
+    <div><h3>Student Council president</h3><p>Lebawi International Academy, 2023 to 2024. Linked students and school leaders and organised school-wide events.</p></div>
+    <div><h3>Computer Science Club president</h3><p>Led project showcases and school talks on cybersecurity and algorithms.</p></div>
+  </div>
+</section>
+
+<section data-sector="contact" id="contact">
+  <h2>Contact</h2>
+  <p class="lead">Building a cross-platform app, a vision or ML system, or something for community impact? Get in touch.</p>
+  <div class="links">
+    <a href="https://github.com/ephrem321">GitHub</a>
+    <a href="https://www.linkedin.com/in/ephremat">LinkedIn</a>
+    <a href="https://t.me/NexusVolunteerism">Nexus on Telegram</a>
+    <a href="mailto:eag9778@nyu.edu">eag9778@nyu.edu</a>
+  </div>
+</section>
+</main>
+<div id="boot"><div id="bl"></div><small>click to skip</small></div>
+<div class="term">
+  <div class="tpanel" id="tpanel" hidden role="dialog" aria-label="Console">
+    <div class="thead"><span>agri-1 console</span><button id="tclose" aria-label="Close console">close</button></div>
+    <div id="tlog" aria-live="polite"></div>
+    <div class="tchips" id="tchips"></div>
+    <label class="trow"><span>$</span><input id="cli" autocomplete="off" spellcheck="false" placeholder="type a command, Tab completes" aria-label="Console command"></label>
+  </div>
+  <button class="tbtn" id="topen">console<kbd>/</kbd></button>
+</div>
+<div class="pill" aria-live="off">alt <span id="pa">120</span> m · sector: <span id="ps">takeoff</span></div>
+
+<script>
+const $=s=>document.querySelector(s),cv=$('#cam'),x=cv.getContext('2d');
+const still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+let W,H,terr,mode='thermal',cows=[],t=0,mx=null,my=null,live=true,lock=0;
+function build(){
+ W=cv.width=cv.clientWidth;H=cv.height=cv.clientHeight;if(mx===null){mx=W*.68;my=H*.4}
+ terr=document.createElement('canvas');terr.width=W;terr.height=H;const g=terr.getContext('2d'),th=mode==='thermal';
+ g.fillStyle=th?'#0b0a1f':'#2f4d24';g.fillRect(0,0,W,H);
+ for(let i=0;i<80;i++){const w=80+Math.random()*170,h=60+Math.random()*150,px=Math.random()*W-40,py=Math.random()*H,
+  hue=th?235+Math.random()*45:70+Math.random()*55,l=th?6+Math.random()*11:20+Math.random()*16;
+  for(const o of[-H,0,H]){g.fillStyle=`hsl(${hue} ${th?45:42}% ${l}%)`;g.fillRect(px,py+o,w,h);g.strokeStyle=th?'#1d1a44':'#1a3214';g.lineWidth=2;g.strokeRect(px,py+o,w,h)}}
+ g.strokeStyle=th?'#2a2058':'#6b5a3a';g.lineWidth=7;for(const o of[-H,0,H]){g.beginPath();g.moveTo(0,H*.62+o);g.bezierCurveTo(W*.3,H*.4+o,W*.6,H*.9+o,W,H*.55+o);g.stroke()}
+ cows=Array.from({length:Math.max(14,Math.min(34,W/36|0))},(_,i)=>({id:i,x:Math.random()*W,y:Math.random()*H,a:Math.random()*6.28}))}
+function ell(px,py,rx,ry,col,rot){x.fillStyle=col;x.beginPath();x.ellipse(px,py,rx,ry,rot||0,0,6.28);x.fill()}
+function body(){x.beginPath();x.moveTo(1.5,0);x.ellipse(-6,0,7.5,6.8,0,0,6.28);x.moveTo(13,0);x.ellipse(6,0,7,6.2,0,0,6.28);x.rect(-6,-5,12,10)}
+function cow(c,th){x.save();x.translate(c.x,c.y);x.rotate(c.a);
+ if(th){x.fillStyle='rgba(255,90,20,.16)';x.beginPath();x.arc(0,0,20,0,6.28);x.fill();
+  [[-9,-6.8],[-9,6.8],[8,-6.2],[8,6.2]].forEach(p=>ell(p[0],p[1],1.8,1.1,'#b8430f'));
+  x.strokeStyle='#ff9a3c';x.lineWidth=1.3;x.beginPath();x.moveTo(-13,0);x.quadraticCurveTo(-17,3,-19,1);x.stroke();
+  ell(11,0,5,3.4,'#f27a24');ell(16,0,3.6,2.6,'#d9511a');ell(14,-3.7,1.7,.9,'#ffe08a',-.5);ell(14,3.7,1.7,.9,'#ffe08a',.5);
+  const g=x.createLinearGradient(0,-7,0,7);g.addColorStop(0,'#ff7a22');g.addColorStop(.5,'#fff0b0');g.addColorStop(1,'#ff7a22');
+  body();x.fillStyle=g;x.fill();x.strokeStyle='#3a1208';x.lineWidth=1.2;x.stroke();
+  x.strokeStyle='rgba(255,255,225,.7)';x.lineWidth=1;x.beginPath();x.moveTo(-12,0);x.lineTo(9,0);x.stroke();
+  ell(-7,0,3,2.4,'#fffbe0');ell(6,0,2.6,2.2,'#fffbe0')}
+ else{const hol=c.id%3!==0;x.translate(2,3);body();x.fillStyle='rgba(0,0,0,.28)';x.fill();x.translate(-2,-3);
+  x.strokeStyle=hol?'#2a2523':'#4a2b16';x.lineWidth=1.4;x.beginPath();x.moveTo(-13,0);x.quadraticCurveTo(-17,3,-19,1);x.stroke();ell(-19.5,1,1.3,1.3,'#1b1a1a');
+  ell(11,0,5,3.4,hol?'#e9e5da':'#5d3820');
+  body();x.fillStyle=hol?'#f2efe6':'#6b3f22';x.fill();
+  if(hol){x.save();body();x.clip();[[-6,-2,4.5,3],[2,2.2,4,2.6],[-1,-4.4,3.4,2.2],[7,-1,2.8,2.2],[-10,3,3,2]].forEach(p=>ell(p[0],p[1],p[2],p[3],'#1b1a1a',c.id));x.restore()}
+  ell(16,0,3.8,2.8,hol?'#2a2523':'#4a2b16');ell(19,0,1.7,1.5,'#e0b9a0');
+  ell(14,-3.8,1.8,1,'#1b1a1a',-.5);ell(14,3.8,1.8,1,'#1b1a1a',.5)}
+ x.restore()}
+function label(c,conf){x.fillStyle='#f0abfc';x.font='11px JetBrains Mono,monospace';x.fillText('cattle '+conf+(mode==='thermal'?' '+(37.9+(c.id%9)/10).toFixed(1)+'C':''),c.x-17,c.y-22)}
+function frame(){requestAnimationFrame(frame);if(!live)return;t++;const sp=still?0:.6,dy=(t*sp)%H;
+ x.drawImage(terr,0,dy);x.drawImage(terr,0,dy-H);const th=mode==='thermal';
+ cows.forEach(c=>{if(!still){c.a+=(Math.random()-.5)*.07;const v=c.id%3?.3:0;c.x+=Math.cos(c.a)*v;c.y+=Math.sin(c.a)*v+sp;if(c.y>H+20)c.y-=H+40;if(c.x<-20)c.x=W+20;if(c.x>W+20)c.x=-20}
+  cow(c,th)});
+ const near=cows.map(c=>({c,d:Math.hypot(c.x-mx,c.y-my)})).filter(o=>o.d<250).sort((a,b)=>a.d-b.d);
+ x.lineWidth=1.5;near.forEach((o,i)=>{const c=o.c;x.strokeStyle=i?'rgba(255,210,63,.7)':'#fff';const s=i?15:19;x.strokeRect(c.x-s,c.y-s*.75,s*2,s*1.5);label(c,(.82+((c.id*37+(t>>5))%17)/100).toFixed(2))});
+ if(near[0]){const c=near[0].c;lock=c.id;x.strokeStyle='rgba(255,255,255,.5)';x.setLineDash([4,5]);x.beginPath();x.moveTo(mx,my);x.lineTo(c.x,c.y);x.stroke();x.setLineDash([])}
+ x.strokeStyle='#c084fc';x.lineWidth=2;x.beginPath();x.arc(mx,my,26,0,6.28);x.moveTo(mx-40,my);x.lineTo(mx-14,my);x.moveTo(mx+14,my);x.lineTo(mx+40,my);x.moveTo(mx,my-40);x.lineTo(mx,my-14);x.moveTo(mx,my+14);x.lineTo(mx,my+40);x.stroke();
+ if(!still){const sy=(t*2.2)%H;const gr=x.createLinearGradient(0,sy-24,0,sy);gr.addColorStop(0,'rgba(168,85,247,0)');gr.addColorStop(1,'rgba(168,85,247,.22)');x.fillStyle=gr;x.fillRect(0,sy-24,W,24)}
+ if(t%8===0){$('#ht').textContent=near.length;$('#hl').textContent=near[0]?'locked: cattle #'+lock:'searching';
+  $('#hc').textContent=(9.03+t*1e-5).toFixed(4)+' N '+(38.74+Math.sin(t/200)*.002).toFixed(4)+' E'}}
+const hero=$('#top');
+hero.addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top});
+new IntersectionObserver(e=>live=e[0].isIntersecting).observe(hero);
+$('#tog').onclick=()=>{mode=mode==='thermal'?'visible':'thermal';$('#hm').textContent=mode;$('#tog').textContent=mode==='thermal'?'Switch to visible camera':'Switch to thermal camera';build()};
+addEventListener('resize',build);build();frame();
+// altitude and sector readout
+const pa=$('#pa'),ha=$('#ha');
+addEventListener('scroll',()=>{const p=scrollY/(document.documentElement.scrollHeight-innerHeight||1),a=Math.round(120-90*p);pa.textContent=a;ha.textContent=a},{passive:true});
+const sec=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)$('#ps').textContent=e.target.dataset.sector}),{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('[data-sector]').forEach(s=>sec.observe(s));
+// counters
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);const n=+e.target.dataset.n;let s=0;
+ const k=()=>{s=Math.min(n,s+Math.ceil(n/55));e.target.textContent=s.toLocaleString()+'+';if(s<n)requestAnimationFrame(k)};k()}),{threshold:.6});
+document.querySelectorAll('[data-n]').forEach(e=>io.observe(e));
+// boot sequence
+(()=>{const b=$('#boot'),p=$('#bl');if(still){b.remove();return}
+const L=['AGRI-1 flight computer','camera ........ ok','thermal sensor . ok','loading cattle-detector model','gps lock ...... 9.03 N 38.74 E','takeoff'];let i=0;
+const end=()=>{b.style.opacity=0;setTimeout(()=>b.remove(),600)};b.onclick=end;
+const iv=setInterval(()=>{if(i<L.length)p.textContent+='> '+L[i++]+'\n';else{clearInterval(iv);setTimeout(end,350)}},280)})();
+// console
+(()=>{const P=$('#tpanel'),B=$('#topen'),log=$('#tlog'),i=$('#cli'),chips=$('#tchips');
+const go={projects:'projects',impact:'impact',nexus:'impact',experience:'experience',skills:'skills',recognition:'recognition',awards:'recognition',leadership:'leadership',contact:'contact',home:'top',apps:'apps',flutter:'apps',mobile:'apps',competitions:'competitions',wins:'competitions',hackathons:'competitions'};
+const L={github:'https://github.com/ephrem321',linkedin:'https://www.linkedin.com/in/ephremat',telegram:'https://t.me/NexusVolunteerism',join:'https://t.me/NexusVolunteerism'};
+const names=[...Object.keys(go),...Object.keys(L),'thermal','visible','whoami','help','clear'];
+const hist=[];let hi=0;
+function print(t,c){const d=document.createElement('div');d.textContent=t;if(c)d.className=c;log.appendChild(d);log.scrollTop=log.scrollHeight}
+function show(on){P.hidden=!on;B.hidden=on;if(on){i.focus();if(!log.children.length)print('Welcome aboard. Tap a command or type help.')}else B.focus()}
+function run(v){v=v.trim().toLowerCase();if(!v)return;hist.push(v);hi=hist.length;print('$ '+v,'cmd');
+ if(go[v]){document.getElementById(go[v]).scrollIntoView({behavior:still?'auto':'smooth'});print('Flying to '+v+'.');if(innerWidth<700)show(false)}
+ else if(L[v]){open(L[v],'_blank','noopener');print('Opening '+v+'.')}
+ else if(v==='thermal'||v==='visible'){if(mode!==v)$('#tog').click();scrollTo({top:0});print('Camera: '+v+'.')}
+ else if(v==='whoami')print('Ephrem Atsebeha. CS and Business at NYU Abu Dhabi. Builds vision and ML systems and cross-platform apps.')
+ else if(v==='clear')log.textContent='';
+ else if(v==='help')print('Commands: '+names.filter(n=>!['home','flutter','mobile','awards','wins','hackathons','nexus'].includes(n)).join(', ')+'. Tab completes, arrow keys recall.');
+ else print('Unknown command "'+v+'". Type help.')}
+['competitions','projects','apps','impact','skills','contact','join','github','linkedin','thermal','visible'].forEach(n=>{const b=document.createElement('button');b.textContent=n;b.onclick=()=>{run(n);i.focus()};chips.appendChild(b)});
+i.addEventListener('keydown',e=>{
+ if(e.key==='Enter'){run(i.value);i.value=''}
+ else if(e.key==='Tab'){e.preventDefault();const m=names.find(n=>i.value&&n.startsWith(i.value.toLowerCase()));if(m)i.value=m}
+ else if(e.key==='ArrowUp'){e.preventDefault();if(hi>0)i.value=hist[--hi]}
+ else if(e.key==='ArrowDown'){e.preventDefault();i.value=hi<hist.length-1?hist[++hi]:(hi=hist.length,'')}
+ else if(e.key==='Escape')show(false)});
+B.onclick=()=>show(true);$('#tclose').onclick=()=>show(false);
+addEventListener('keydown',e=>{if(e.key==='/'&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();show(true)}})})();
+// Nexus network map
+(()=>{const c=$('#net'),g=c.getContext('2d');let w,h,hubs,dots,hov=-1,vis=false;
+const names=['Ethiopian Red Cross','Mary Joy','Sele Enat','Nehemiah Autism Center','Mathios Wendu Cancer Society','A2SV'];
+function init(){w=c.width=c.clientWidth;h=c.height=c.clientHeight;hubs=names.map((n,i)=>({n,a:i/6*6.28,x:0,y:0}));
+ dots=Array.from({length:240},(_,i)=>({h:i%6,a:Math.random()*6.28,d:18+Math.random()*34,s:(Math.random()-.5)*.012}))}
+c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect(),px=e.clientX-r.left,py=e.clientY-r.top;hov=hubs.findIndex(b=>Math.hypot(b.x-px,b.y-py)<55)});
+c.addEventListener('pointerleave',()=>hov=-1);
+new IntersectionObserver(e=>vis=e[0].isIntersecting).observe(c);
+function draw(){requestAnimationFrame(draw);if(!vis)return;g.clearRect(0,0,w,h);const cx=w/2,cy=h/2,T=still?0:Date.now()/1000,ink=getComputedStyle(document.body).color;
+ hubs.forEach(b=>{b.x=cx+Math.cos(b.a+T*.08)*w*.32;b.y=cy+Math.sin(b.a+T*.08)*h*.3;g.strokeStyle='rgba(168,85,247,.4)';g.beginPath();g.moveTo(cx,cy);g.lineTo(b.x,b.y);g.stroke()});
+ dots.forEach(d=>{const b=hubs[d.h];if(!still)d.a+=d.s;const px=b.x+Math.cos(d.a)*d.d,py=b.y+Math.sin(d.a)*d.d,on=hov<0||hov===d.h;
+  g.globalAlpha=on?.5:.07;g.strokeStyle='#7b6cff';g.beginPath();g.moveTo(b.x,b.y);g.lineTo(px,py);g.stroke();g.globalAlpha=on?1:.15;g.fillStyle='#e9b3ff';g.fillRect(px-1.5,py-1.5,3,3)});
+ g.globalAlpha=1;g.font='11px JetBrains Mono,monospace';g.textAlign='center';
+ hubs.forEach((b,i)=>{g.fillStyle=hov===i?'#c084fc':ink;g.beginPath();g.arc(b.x,b.y,hov===i?9:6,0,6.28);g.fill();g.fillText(b.n,b.x,b.y-14)});
+ g.fillStyle='#c084fc';g.beginPath();g.arc(cx,cy,12,0,6.28);g.fill();g.fillStyle=ink;g.font='13px JetBrains Mono,monospace';g.fillText('Nexus',cx,cy+30)}
+addEventListener('resize',init);init();draw()})();
+// device switcher
+document.querySelectorAll('.dev').forEach(d=>d.onclick=()=>{document.querySelectorAll('.dev').forEach(o=>o.setAttribute('aria-pressed',o===d));$('#devtxt').textContent=d.dataset.t});
+</script>
+</body>
+</html>
